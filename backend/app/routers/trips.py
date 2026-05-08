@@ -60,9 +60,21 @@ def update_trip(
         if not update_data:
             return dict(trip)
             
-        set_clause = ", ".join([f"{k} = %s" for k in update_data.keys()])
-        values = list(update_data.values())
+        # Explicitly define allowed fields to ensure professional security practices
+        allowed_fields = ["title", "location", "description", "start_date", "end_date", "max_participants", "price", "cover_image_url"]
+        update_pairs = []
+        values = []
+        
+        for field in allowed_fields:
+            if field in update_data:
+                update_pairs.append(f"{field} = %s")
+                values.append(update_data[field])
+        
+        if not update_pairs:
+            return dict(trip)
+
         values.append(trip_id)
+        set_clause = ", ".join(update_pairs)
         
         cur.execute(f"UPDATE trips SET {set_clause} WHERE id = %s RETURNING *", values)
         updated_trip = cur.fetchone()

@@ -76,11 +76,7 @@ export default function Profile() {
 
       <main className="pt-32 px-6">
         <div className="max-w-4xl mx-auto">
-          <div
-            
-            
-            className="mb-12"
-          >
+          <div className="mb-12">
             <h1 className="section-title mb-3">
               Account <span className="gradient-text">Settings</span>
             </h1>
@@ -130,9 +126,8 @@ export default function Profile() {
               </div>
 
             {/* Tab Content */}
-            
               {tab === 'bookings' && (
-                <div key="bookings"    >
+                <div key="bookings">
                   {loadingB ? (
                     <div className="grid gap-6">
                       {[1, 2].map(i => <div key={i} className="skeleton h-32 rounded-[2.5rem]" />)}
@@ -151,8 +146,6 @@ export default function Profile() {
                         <div
                           key={b.id}
                           className="glass p-8 rounded-[2.5rem] flex items-center gap-6 group"
-                          
-                          
                         >
                           <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
                             {['🏔','🏜','🌆','🌊'][i % 4]}
@@ -180,7 +173,7 @@ export default function Profile() {
               )}
 
               {tab === 'trips' && (
-                <div key="trips"    >
+                <div key="trips">
                   {loadingT ? (
                     <div className="grid gap-6">
                       {[1, 2].map(i => <div key={i} className="skeleton h-32 rounded-[2.5rem]" />)}
@@ -214,7 +207,7 @@ export default function Profile() {
               )}
 
               {tab === 'account' && (
-                <div key="account"     className="flex flex-col gap-8">
+                <div key="account" className="flex flex-col gap-8">
                   {/* Personal Details */}
                   <div className="glass p-10 rounded-[3rem]">
                     <h2 className="text-2xl font-bold tracking-tight mb-8" style={{ color: 'var(--text-primary)' }}>Personal Details</h2>
@@ -281,7 +274,6 @@ export default function Profile() {
                   </div>
                 </div>
               )}
-            
             </div>
           </div>
         </div>
@@ -296,11 +288,7 @@ export default function Profile() {
 
 function EmptyState({ icon, title, desc, cta, ctaHref }) {
   return (
-    <div
-      
-      
-      className="glass p-20 text-center rounded-[3rem]"
-    >
+    <div className="glass p-20 text-center rounded-[3rem]">
       <div className="text-6xl mb-8 opacity-30">{icon}</div>
       <h3 className="text-2xl font-bold mb-4 tracking-tight" style={{ color: 'var(--text-primary)' }}>{title}</h3>
       <p className="mb-10 max-w-sm mx-auto leading-relaxed" style={{ color: 'var(--text-muted)' }}>{desc}</p>

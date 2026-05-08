@@ -4,7 +4,7 @@ from typing import Optional, List
 from pydantic import BaseModel, EmailStr, Field
 
 
-# ─── AUTH ─────────────────────────────────────────────────────────
+# Authentication Schemas
 class RegisterRequest(BaseModel):
     name:     str       = Field(..., min_length=2, max_length=100)
     email:    EmailStr
@@ -32,7 +32,7 @@ class TokenResponse(BaseModel):
     user:         UserOut
 
 
-# ─── TRIPS ────────────────────────────────────────────────────────
+# Trip Schemas
 class TripCreate(BaseModel):
     title:            str          = Field(..., min_length=3, max_length=200)
     location:         str          = Field(..., min_length=2, max_length=200)
@@ -70,7 +70,7 @@ class TripOut(BaseModel):
         from_attributes = True
 
 
-# ─── BOOKINGS ─────────────────────────────────────────────────────
+# Booking Schemas
 class BookingCreate(BaseModel):
     trip_id: str
 

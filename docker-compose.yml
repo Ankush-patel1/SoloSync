@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: solosync-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: solosync
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+
+  backend:
+    build: ./backend
+    container_name: solosync-backend
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://postgres:password@db:5432/solosync
+      SECRET_KEY: dev-secret-key-please-change-in-production
+      CORS_ORIGINS: "http://localhost:5173"
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: 
+      context: ./frontend
+      args:
+        VITE_API_URL: http://localhost:8000
+    container_name: solosync-frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "5173:8080" # Mapping to Nginx default port or Cloud Run injected port
+
+volumes:
+  postgres_data:

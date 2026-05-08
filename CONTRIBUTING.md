@@ -37,6 +37,12 @@ cp .env.example .env
 npm run dev
 ```
 
+### 4. Docker Setup (Alternative)
+```bash
+docker-compose up --build
+```
+This starts the database, backend, and frontend automatically.
+
 ## Project Structure
 - `backend/`: FastAPI + PostgreSQL logic.
 - `frontend/`: React + Vite UI.

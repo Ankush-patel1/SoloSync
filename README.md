@@ -73,6 +73,19 @@ cp .env.example .env
 npm run dev
 ```
 
+### Docker (Recommended)
+
+If you have Docker installed, you can spin up the entire stack (Database, Backend, Frontend) with a single command:
+
+```bash
+docker-compose up --build
+```
+
+The services will be available at:
+- **Frontend**: http://localhost:5173
+- **Backend**: http://localhost:8000
+- **Database**: localhost:5432
+
 ---
 
 ## Project Structure

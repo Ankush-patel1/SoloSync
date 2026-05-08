@@ -16,8 +16,6 @@ export default function Host() {
 
   const update = (k, v) => setForm(p => ({ ...p, [k]: v }));
 
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!token) { setAuthOpen(true); return; }
@@ -32,13 +30,10 @@ export default function Host() {
     }
   };
 
-
-
   return (
     <>
       <div className="min-h-screen pb-20">
         <Navbar onLoginClick={() => setAuthOpen(true)} />
-        
         <main className="pt-32 px-6">
             <div className="max-w-2xl mx-auto">
             <div>

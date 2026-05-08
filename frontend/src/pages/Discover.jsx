@@ -62,15 +62,10 @@ export default function Explore() {
   return (
     <>
     <div className="min-h-screen pb-20">
-      <Navbar onLoginClick={() => setAuthOpen(true)} />
-
+      <Navbar onLoginClick={() => setAuthOpen(false)} />
       <main className="pt-32 px-6">
         <div className="max-w-6xl mx-auto">
-          <div
-            
-            
-            className="mb-12"
-          >
+          <div className="mb-12">
             <h1 className="section-title mb-3">
               Discover Your <span className="gradient-text">Next Tribe</span>
             </h1>
@@ -116,9 +111,6 @@ export default function Explore() {
                     <div
                       key={trip.id}
                       className="glass rounded-[2.5rem] p-6 hover:translate-y-[-8px] transition-all duration-500 group"
-                      
-                      
-                      
                     >
                       {/* Image Area */}
                       <div className="h-48 rounded-[2rem] overflow-hidden mb-6 relative bg-slate-900">
@@ -201,52 +193,74 @@ export default function Explore() {
       </main>
 
       {/* Booking success overlay */}
-      
-        {selectedTrip && (
+      {selectedTrip && (
+        <div
+          className="modal-overlay"
+          onClick={() => setSelectedTrip(null)}
+        >
           <div
-            className="modal-overlay"
-            onClick={() => setSelectedTrip(null)}
+            className="glass w-full max-w-md mx-4 p-10 text-center"
+            style={{ zIndex: 201 }}
+            onClick={e => e.stopPropagation()}
           >
-            <div
-              
-              
-              
-              
-              className="glass w-full max-w-md mx-4 p-10 text-center"
-              style={{ zIndex: 201 }}
-              onClick={e => e.stopPropagation()}
-            >
-              <div className="text-5xl mb-4">🎉</div>
-              <h2 className="text-2xl font-bold gradient-text mb-2">
-                You&apos;re going!
-              </h2>
-              <p className="text-sm mb-2" style={{ color: 'var(--text-muted)' }}>
-                Your booking for
-              </p>
-              <p className="font-bold text-lg mb-1" style={{ color: 'var(--text-primary)' }}>
-                {selectedTrip.title}
-              </p>
-              <p className="text-sm mb-6" style={{ color: 'var(--text-muted)' }}>
-                📍 {selectedTrip.location}
-              </p>
-              <div className="flex gap-3 justify-center">
-                <a href="/trips" className="btn-primary">View My Trips</a>
-                <button onClick={() => setSelectedTrip(null)} className="btn-ghost">
-                  Continue Exploring
-                </button>
-              </div>
+            <div className="text-5xl mb-4">🎉</div>
+            <h2 className="text-2xl font-bold gradient-text mb-2">
+              You&apos;re going!
+            </h2>
+            <p className="text-sm mb-2" style={{ color: 'var(--text-muted)' }}>
+              Your booking for
+            </p>
+            <p className="font-bold text-lg mb-1" style={{ color: 'var(--text-primary)' }}>
+              {selectedTrip.title}
+            </p>
+            <p className="text-sm mb-6" style={{ color: 'var(--text-muted)' }}>
+              📍 {selectedTrip.location}
+            </p>
+            <div className="flex gap-3 justify-center">
+              <a href="/trips" className="btn-primary">View My Trips</a>
+              <button onClick={() => setSelectedTrip(null)} className="btn-ghost">
+                Continue Exploring
+              </button>
             </div>
           </div>
-        )}
-      
+        </div>
+      )}
 
       <Footer />
     </div>
-      {authOpen && <AuthModal onClose={() => setAuthOpen(false)} />}
-    </>
-  );
+    {authOpen && <AuthModal onClose={() => setAuthOpen(false)} />}
+  </>
+);
 }
 
-// Fallback demo data when backend isn't running
-const DEMO_TRIPS = [];
+// Fallback demo data
+const DEMO_TRIPS = [
+  {
+    id: 'demo-1',
+    title: 'Spiti Valley Winter Expedition',
+    location: 'Kaza, Himachal Pradesh',
+    description: 'Experience the raw beauty of Spiti in winter. Ancient monasteries, frozen waterfalls, and the warmest hospitality in the coldest desert.',
+    price: 15000,
+    start_date: '2024-12-15',
+    max_participants: 12
+  },
+  {
+    id: 'demo-2',
+    title: 'Varkala Beach Yoga Retreat',
+    location: 'Varkala, Kerala',
+    description: 'A week of sunrise yoga on the cliffs, Ayurvedic meals, and evening surf sessions at one of India\'s most scenic beaches.',
+    price: 8500,
+    start_date: '2024-11-20',
+    max_participants: 15
+  },
+  {
+    id: 'demo-3',
+    title: 'Jaisalmer Desert Stargazing',
+    location: 'Thar Desert, Rajasthan',
+    description: 'Camel safaris, folk music by the bonfire, and sleeping under a million stars in the heart of the Great Indian Desert.',
+    price: 4500,
+    start_date: '2024-10-10',
+    max_participants: 20
+  }
+];
 
