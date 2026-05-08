@@ -3,8 +3,9 @@
 
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
--- ─── USERS ────────────────────────────────────────────────────────
+-- Users table
 CREATE TABLE IF NOT EXISTS users (
+
     id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name             VARCHAR(100)    NOT NULL,
     email            VARCHAR(255)    UNIQUE NOT NULL,
@@ -17,7 +18,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 
--- ─── TRIPS ────────────────────────────────────────────────────────
+-- Trips table
 CREATE TABLE IF NOT EXISTS trips (
     id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     title            VARCHAR(200)    NOT NULL,
@@ -35,7 +36,7 @@ CREATE TABLE IF NOT EXISTS trips (
 CREATE INDEX IF NOT EXISTS idx_trips_host    ON trips(host_id);
 CREATE INDEX IF NOT EXISTS idx_trips_created ON trips(created_at DESC);
 
--- ─── BOOKINGS ─────────────────────────────────────────────────────
+-- Bookings table
 CREATE TABLE IF NOT EXISTS bookings (
     id         UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id    UUID         NOT NULL REFERENCES users(id)  ON DELETE CASCADE,
