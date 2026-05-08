@@ -1,0 +1,61 @@
+# ── Python ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+*.so
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Alembic (if any)
+alembic/versions/*.pyc
+
+# ── Node / Frontend ──────────────────────────────────────
+node_modules/
+frontend/dist/
+frontend/node_modules/
+frontend/.env
+frontend/.env.local
+frontend/.env.production
+
+# ── Environment / Secrets ────────────────────────────────
+backend/.env
+.env
+.env.*
+!.env.example
+!backend/.env.example
+!frontend/.env.example
+
+# ── OS ───────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ──────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Logs ─────────────────────────────────────────────────
+*.log
+logs/
+
+# ── Databases & Temporary ────────────────────────────────
+*.db
+scratch/
+backend/scratch/
+
+# ── Large assets ─────────────────────────────────────────
+*.zip
+*.rar
+*.7z
