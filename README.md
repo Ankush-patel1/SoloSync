@@ -9,10 +9,9 @@
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14+-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![GCP](https://img.shields.io/badge/Google%20Cloud-Ready-4285F4?logo=google-cloud&logoColor=white)](https://cloud.google.com/)
-
-![SoloSync Homepage](./docs/screenshot.png)
-
 </div>
+
+
 
 ---
 
